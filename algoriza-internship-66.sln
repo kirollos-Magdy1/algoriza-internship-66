@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "algoriza-internship-66.API"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D3008960-324A-49C1-8E5B-3CE58EF531D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{65DE12F4-855D-45E6-827E-2A46A939C266}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{B099457B-B180-4657-BDC1-4FA784F00054}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D3008960-324A-49C1-8E5B-3CE58EF531D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3008960-324A-49C1-8E5B-3CE58EF531D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3008960-324A-49C1-8E5B-3CE58EF531D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65DE12F4-855D-45E6-827E-2A46A939C266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65DE12F4-855D-45E6-827E-2A46A939C266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65DE12F4-855D-45E6-827E-2A46A939C266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65DE12F4-855D-45E6-827E-2A46A939C266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B099457B-B180-4657-BDC1-4FA784F00054}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B099457B-B180-4657-BDC1-4FA784F00054}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B099457B-B180-4657-BDC1-4FA784F00054}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B099457B-B180-4657-BDC1-4FA784F00054}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
