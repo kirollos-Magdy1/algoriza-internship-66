@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "algoriza-internship-66.API", "algoriza-internship-66.API\algoriza-internship-66.API.csproj", "{30A0E358-0338-424E-8452-29728DF73E9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "algoriza-internship-66.API", "algoriza-internship-66.API\algoriza-internship-66.API.csproj", "{30A0E358-0338-424E-8452-29728DF73E9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D3008960-324A-49C1-8E5B-3CE58EF531D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{30A0E358-0338-424E-8452-29728DF73E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30A0E358-0338-424E-8452-29728DF73E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30A0E358-0338-424E-8452-29728DF73E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3008960-324A-49C1-8E5B-3CE58EF531D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3008960-324A-49C1-8E5B-3CE58EF531D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3008960-324A-49C1-8E5B-3CE58EF531D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3008960-324A-49C1-8E5B-3CE58EF531D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
