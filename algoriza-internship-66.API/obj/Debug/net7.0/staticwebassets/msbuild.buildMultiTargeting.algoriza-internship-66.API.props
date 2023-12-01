@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\algoriza-internship-66.API.props" />
+</Project>

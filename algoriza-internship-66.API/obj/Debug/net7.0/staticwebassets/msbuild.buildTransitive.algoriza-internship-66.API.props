@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\algoriza-internship-66.API.props" />
+</Project>
