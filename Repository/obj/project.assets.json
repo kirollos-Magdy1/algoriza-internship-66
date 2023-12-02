@@ -1141,7 +1141,8 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.13",
-          "Microsoft.EntityFrameworkCore": "7.0.13"
+          "Microsoft.EntityFrameworkCore": "7.0.13",
+          "Repository": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Core.dll": {}
@@ -3154,5 +3155,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1108",
+      "level": "Error",
+      "message": "Cycle detected. \r\n  Repository -> Core -> Repository.",
+      "libraryId": "Repository",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

@@ -1235,7 +1235,8 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.13",
-          "Microsoft.EntityFrameworkCore": "7.0.13"
+          "Microsoft.EntityFrameworkCore": "7.0.13",
+          "Repository": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Core.dll": {}

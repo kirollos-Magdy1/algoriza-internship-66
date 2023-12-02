@@ -115,7 +115,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Repository\\Repository.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
