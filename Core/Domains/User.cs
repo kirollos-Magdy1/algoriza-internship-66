@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Core.Enums;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,6 +16,7 @@ namespace Core.Domains
 
         public int SpecializationId { get; set; }
 
+        public Gender Gender{ get; set; }
         public int CompletedBookings { get; set; }
 
         public int CouponsUsed { get; set; }

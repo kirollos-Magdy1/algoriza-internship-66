@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,10 @@ namespace Core.Domains
 
         public string Type { get; set; }
 
+        public DiscountType DiscountType { get; set; }
+
+        // number of completed bookings to be eligible for having discount
+        public int EligibleRequests { get; set; }
 
         public DateTime ExpireDate { get; set; }
 
