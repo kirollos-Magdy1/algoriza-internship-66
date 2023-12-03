@@ -114,18 +114,20 @@ namespace Repository.Migrations
                     b.Property<int>("DiscountType")
                         .HasColumnType("int");
 
+                    b.Property<int>("DiscountValue")
+                        .HasColumnType("int");
+
                     b.Property<int>("EligibleRequests")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ExpireDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsUsed")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsUsed")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

@@ -1235,8 +1235,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.13",
-          "Microsoft.EntityFrameworkCore": "7.0.13",
-          "Repository": "1.0.0"
+          "Microsoft.EntityFrameworkCore": "7.0.13"
         },
         "compile": {
           "bin/placeholder/Core.dll": {}
@@ -1263,6 +1262,9 @@
       "Service/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Core": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Service.dll": {}
         },
@@ -3526,7 +3528,6 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Core >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.13",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.13",
@@ -3562,9 +3563,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Core\\Core.csproj"
-            },
             "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Repository\\Repository.csproj": {
               "projectPath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Repository\\Repository.csproj"
             },

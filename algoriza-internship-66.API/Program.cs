@@ -1,8 +1,12 @@
 
 using Core.Domains;
+using Core.IRepositories;
+using Core.Repositories;
+using Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Service;
 
 namespace algoriza_internship_66.API
 {
@@ -23,8 +27,13 @@ namespace algoriza_internship_66.API
 
             builder.Services.AddIdentity<User, IdentityRole>(options => {
                 options.Password.RequireNonAlphanumeric = false;
-
             }).AddEntityFrameworkStores<ApplicationDbContext>();
+
+            builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+            builder.Services.AddTransient<ICouponRepository, CouponRepository>();
+
+            builder.Services.AddTransient<ICouponService, CouponService>();
 
 
             //----------------------------------------------------

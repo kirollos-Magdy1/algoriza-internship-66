@@ -9,3 +9,7 @@ C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\Service\obj\De
 C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\Service\obj\Debug\net7.0\refint\Service.dll
 C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\Service\obj\Debug\net7.0\Service.pdb
 C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\Service\obj\Debug\net7.0\ref\Service.dll
+C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\Service\bin\Debug\net7.0\Core.dll
+C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\Service\bin\Debug\net7.0\Core.pdb
+C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\Service\obj\Debug\net7.0\Service.csproj.AssemblyReference.cache
+C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\Service\obj\Debug\net7.0\Service.csproj.CopyComplete

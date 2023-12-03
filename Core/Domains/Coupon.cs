@@ -12,15 +12,18 @@ namespace Core.Domains
         public int Id { get; set; }
         public string Code { get; set; }
 
-        public string Type { get; set; }
-
         public DiscountType DiscountType { get; set; }
+
+        public int DiscountValue { get; set; }
 
         // number of completed bookings to be eligible for having discount
         public int EligibleRequests { get; set; }
 
         public DateTime ExpireDate { get; set; }
 
-        public bool IsUsed { get; set; }
+
+        public bool IsActive { get; set; } = true;
+
+        public bool IsUsed { get; set; } = false;
     }
 }

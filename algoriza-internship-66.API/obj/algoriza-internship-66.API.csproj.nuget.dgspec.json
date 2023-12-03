@@ -28,9 +28,6 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Core\\Core.csproj"
-              },
               "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Repository\\Repository.csproj": {
                 "projectPath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Repository\\Repository.csproj"
               },
@@ -115,11 +112,7 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {
-              "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Repository\\Repository.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -265,7 +258,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Core\\Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

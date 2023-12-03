@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v7.0": {
       "algoriza-internship-66.API/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.13",
           "Microsoft.EntityFrameworkCore.Design": "7.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.13",
@@ -693,6 +692,9 @@
         }
       },
       "Service/1.0.0": {
+        "dependencies": {
+          "Core": "1.0.0"
+        },
         "runtime": {
           "Service.dll": {}
         }
