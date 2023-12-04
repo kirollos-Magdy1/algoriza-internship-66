@@ -12,10 +12,10 @@ namespace Core.Services
     {
 
         Task<bool> AddCouponAsync(AddCouponDto coupon);
-        bool UpdateCoupon(CouponDto coupon);
-        bool DeleteCoupon(int id);
+        Task<bool> UpdateCoupon(int Id, UpdateCouponDto coupon);
+        Task<bool> DeleteCoupon(int id);
 
-        bool DeactivateCoupon(int id);
+        Task<bool> DeactivateCoupon(int id);
 
         Task<IEnumerable<CouponDto>> GetAllCouponsAsync();
 

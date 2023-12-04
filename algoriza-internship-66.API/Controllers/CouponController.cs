@@ -14,8 +14,53 @@ namespace algoriza_internship_66.API.Controllers
             this.couponService = couponService;
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateCoupon()
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteCoupon(int Id)
+        {
+            try
+            {
+                var isDeleted = await couponService.DeleteCoupon(Id);
+                return (isDeleted) ? Ok(true) : BadRequest("Could not deleted");
+                
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+        }
+
+        [HttpPatch("{Id}")]
+        public async Task<IActionResult> DeactivateCoupon(int Id)
+        {
+            try
+            {
+                var isDeactivated = await couponService.DeactivateCoupon(Id);
+                return (isDeactivated) ? Ok(true) : BadRequest("Could not deactivate");
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+        [HttpPut("{Id}")]
+        public async Task<IActionResult> UpdateCoupon(int Id, [FromBody] UpdateCouponDto updateCouponDto)
+        {
+            try
+            {
+                var isUpdated = await couponService.UpdateCoupon(Id, updateCouponDto);
+                return (isUpdated) ? Ok(true) : BadRequest("Could not update");
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
 
         [HttpGet]
         public async Task<IActionResult> GetAllCoupons()

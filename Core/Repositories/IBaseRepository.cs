@@ -17,7 +17,7 @@ namespace Core.Repositories
         Task<T> AddAsync(T entity);
         //Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
         T Update(T entity);
-        void Delete(T entity);
+        T Delete(T entity);
        
         //Task<int> CountAsync();
         //Task<int> CountAsync(Expression<Func<T, bool>> criteria);

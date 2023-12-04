@@ -39,19 +39,21 @@ namespace Service
 
         }
 
-        public bool DeactivateCoupon(int id)
+       
+        public async Task<bool> UpdateCoupon(int Id, UpdateCouponDto coupon)
         {
-            throw new NotImplementedException();
-        }
+            var ExistingCoupon =  await couponRepository.GetByIdAsync(Id);
+            if (ExistingCoupon == null || (int)coupon.DiscountType > 1) { return false; }   
 
-        public bool DeleteCoupon(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public bool UpdateCoupon(CouponDto coupon)
-        {
+            ExistingCoupon.Code = coupon.Code;
+            ExistingCoupon.DiscountType = coupon.DiscountType;
+            ExistingCoupon.DiscountValue = coupon.DiscountValue;
+            ExistingCoupon.EligibleRequests = coupon.EligibleRequests;
+            ExistingCoupon.ExpireDate = coupon.ExpireDate;
+
+            var UpdatedCoupon = couponRepository.Update(ExistingCoupon);
             return true;
-                 //couponRepository.Update(coupon);
+                
         }
         public async Task<IEnumerable<CouponDto>> GetAllCouponsAsync()
         {
@@ -87,6 +89,26 @@ namespace Service
 
         }
 
-        
+       
+
+        public async Task<bool> DeactivateCoupon(int Id)
+        {
+            var ExistingCoupon = await couponRepository.GetByIdAsync(Id);
+            if (ExistingCoupon == null || ExistingCoupon.IsActive == false) { return false; }
+
+            ExistingCoupon.IsActive = false;
+            
+            return(couponRepository.Update(ExistingCoupon) != null);
+        }
+
+        public async Task<bool> DeleteCoupon(int Id)
+        {
+            var Coupon = await couponRepository.GetByIdAsync(Id);
+
+            if (Coupon == null) { return false; }
+
+            return (couponRepository.Delete(Coupon) != null);
+
+        }
     }
 }

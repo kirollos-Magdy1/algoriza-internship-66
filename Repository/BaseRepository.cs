@@ -64,10 +64,11 @@ namespace Core.Repositories
             return entity;
         }
 
-        public async void Delete(T entity)
+        public T Delete(T entity)
         {
             _context.Set<T>().Remove(entity);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
+            return entity;
         }
 
     }
