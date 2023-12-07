@@ -12,7 +12,7 @@ namespace Core.Repositories
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
         
-        Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int? skip, int? take,
+        Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int? skip, int? take, int? pageSize,
             Expression<Func<T, object>> orderBy = null, string orderByDirection = OrderBy.Ascending);
         Task<T> AddAsync(T entity);
         //Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);

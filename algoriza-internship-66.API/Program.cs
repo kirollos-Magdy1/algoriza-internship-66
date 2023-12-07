@@ -27,6 +27,8 @@ namespace algoriza_internship_66.API
 
             builder.Services.AddIdentity<User, IdentityRole>(options => {
                 options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
@@ -34,6 +36,9 @@ namespace algoriza_internship_66.API
             builder.Services.AddTransient<ICouponRepository, CouponRepository>();
 
             builder.Services.AddTransient<ICouponService, CouponService>();
+
+            builder.Services.AddTransient<IAccountService, AccountService>();
+
 
 
             //----------------------------------------------------

@@ -693,7 +693,8 @@
       },
       "Service/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0"
+          "Core": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.13"
         },
         "runtime": {
           "Service.dll": {}
