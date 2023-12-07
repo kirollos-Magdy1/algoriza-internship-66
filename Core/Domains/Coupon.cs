@@ -1,6 +1,7 @@
 ﻿using Core.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace Core.Domains
         public int Id { get; set; }
         public string Code { get; set; }
 
+        public string? PatientId { get; set; }
         public DiscountType DiscountType { get; set; }
 
         public int DiscountValue { get; set; }
@@ -25,5 +27,8 @@ namespace Core.Domains
         public bool IsActive { get; set; } = true;
 
         public bool IsUsed { get; set; } = false;
+
+        [ForeignKey("PatientId")]
+        public User? Patient { get; set; }
     }
 }

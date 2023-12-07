@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,8 +25,9 @@ namespace Core.Domains
 
         public string? Image { get; set; }
 
-
         public int? SpecializationId { get; set; }
+
+       
 
         [DataType(DataType.Currency)]
         public decimal? Price { get; set; }
@@ -33,5 +35,10 @@ namespace Core.Domains
         public int CompletedBookings { get; set; }
 
         public int CouponsUsed { get; set; }
+
+
+
+        [ForeignKey("SpecializationId")]
+        public Specialization Specialization { get; set; }
     }
 }
