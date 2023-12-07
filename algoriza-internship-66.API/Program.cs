@@ -32,12 +32,18 @@ namespace algoriza_internship_66.API
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-
             builder.Services.AddTransient<ICouponRepository, CouponRepository>();
+            builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddTransient<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddTransient<IPatientRepository, PatientRepository>();
+
+
 
             builder.Services.AddTransient<ICouponService, CouponService>();
-
             builder.Services.AddTransient<IAccountService, AccountService>();
+            builder.Services.AddTransient<IDoctorServcie, DoctorServcie>();
+            builder.Services.AddTransient<IPatientServcie, PatientServcie>();
+
 
 
 

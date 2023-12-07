@@ -8,51 +8,50 @@ namespace algoriza_internship_66.API.Controllers
     [Route("api/[controller]/[action]")]
     public class DoctorController: Controller
     {
-        private IDoctorService doctorService;
+        private IDoctorServcie doctorService;
 
-        public DoctorController(IDoctorService doctorService)
+        public DoctorController(IDoctorServcie doctorService)
         {
             this.doctorService = doctorService;
-        }
 
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteDoctor(int Id)
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllDoctors(int? pageSize, int? skip, int? take)
         {
             try
             {
-                var isDeleted = await doctorService.DeleteDoctor(Id);
-                return (isDeleted) ? Ok(true) : BadRequest("Could not deleted");
-
+                var doctors = await doctorService.GetAllDoctorsAsync(pageSize, skip, take);
+                return Ok(doctors);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
-        [HttpPatch("{Id}")]
-        public async Task<IActionResult> DeactivateDoctor(int Id)
+        [HttpGet("Id")]
+        public async Task<IActionResult> GetDoctor(string Id)
         {
             try
             {
-                var isDeactivated = await doctorService.DeactivateDoctor(Id);
-                return (isDeactivated) ? Ok(true) : BadRequest("Could not deactivate");
-
+                var doctor = await doctorService.GetDoctorAsync(Id);
+                return Ok(doctor);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
         }
+
+
+       
 
         [HttpPut("{Id}")]
-        public async Task<IActionResult> UpdateDoctor(int Id, [FromBody] UpdateDoctorDto updateDoctorDto)
+        public async Task<IActionResult> UpdateDoctor(string Id, [FromBody] UpdateDoctorDto updateDoctorDto)
         {
             try
             {
-                var isUpdated = await doctorService.UpdateDoctor(Id, updateDoctorDto);
+                var isUpdated = await doctorService.UpdateDoctorAsync(Id, updateDoctorDto);
                 return (isUpdated) ? Ok(true) : BadRequest("Could not update");
 
             }
@@ -63,52 +62,27 @@ namespace algoriza_internship_66.API.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAllDoctors()
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeleteDoctor(string Id)
         {
             try
             {
-                var doctors = await doctorService.GetAllDoctorsAsync();
-                return Ok(doctors);
+                var isDeleted = await doctorService.DeleteDoctorAsync(Id);
+                return (isDeleted) ? Ok(true) : BadRequest("Could not deleted");
+
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
+
         }
 
-        [HttpGet("Id")]
-        public async Task<IActionResult> GetDoctor(int Id)
-        {
-            try
-            {
-                var doctors = await doctorService.GetAllDoctorsAsync();
-                return Ok(doctors);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> CreateDoctor([FromBody] AddDoctorDto addDoctorDto)
-        {
-            try
-            {
-                var NewDoctor = await doctorService.AddDoctorAsync(addDoctorDto);
 
-                if (NewDoctor != null)
-                {
-                    return Ok(true);
-                }
-                else { return BadRequest(false); }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+
+
+
 
     }
 }

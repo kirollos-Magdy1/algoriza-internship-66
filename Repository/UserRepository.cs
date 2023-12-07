@@ -17,37 +17,32 @@ namespace Repository
     public class UserRepository : IUserRepository
     {
         private readonly UserManager<User> usermanger;
-        private readonly ApplicationDbContext context;
 
-
-        public UserRepository(UserManager<User> usermanger, ApplicationDbContext context)
+        public UserRepository(UserManager<User> usermanger)
         {
             this.usermanger = usermanger;
-            this.context = context;
         }
 
-        public async Task<IEnumerable<User>> FindAllAsync(Expression<Func<User, bool>> criteria,Role role, int? pageSize, int? skip, int? take, Expression<Func<User, object>> orderBy = null, string orderByDirection = "ASC")
+        public async Task<IList<User>> FindAllAsync(Role role, int? pageSize, int? skip, int? take, Expression<Func<User, object>> orderBy = null, string orderByDirection = "ASC")
         {
             IList<User> usersInRole = await usermanger.GetUsersInRoleAsync(role.ToString());
 
-            IQueryable<User> query = usersInRole.AsQueryable().Where(criteria);
-
-            if (skip.HasValue)
-                query = query.Skip(skip.Value);
-
-            if (take.HasValue)
-                query = query.Take(take.Value);
-
             if (orderBy != null)
             {
-                if (orderByDirection == OrderBy.Ascending)
-                    query = query.OrderBy(orderBy);
-                else
-                    query = query.OrderByDescending(orderBy);
+                usersInRole = orderByDirection == "ASC"
+                    ? usersInRole.OrderBy(orderBy.Compile()).ToList()
+                    : usersInRole.OrderByDescending(orderBy.Compile()).ToList();
             }
 
-            return await query.ToListAsync();
+            if (skip.HasValue)
+                usersInRole = usersInRole.Skip(skip.Value).ToList();
+
+            if (take.HasValue)
+                usersInRole = usersInRole.Take(take.Value).ToList();
+
+            return usersInRole;
         }
+
 
         public async Task< User> GetByIdAsync(string id, Role role)
         {
@@ -55,9 +50,6 @@ namespace Repository
             var user = usersInRole.Where(u => u.Id == id).FirstOrDefault();
             return user;
         }
-
-
-
 
 
 

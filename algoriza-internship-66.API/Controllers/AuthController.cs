@@ -15,7 +15,7 @@ namespace algoriza_internship_66.API.Controllers
             this.accountService = accountService;
         }
 
-        [HttpPost("RegisterDoctor")]
+        [HttpPost("")]
         public async Task<IActionResult> RegisterDoctor([FromBody] RegisterPatientDto registerDoctortDto ) {
 
             try
@@ -32,7 +32,7 @@ namespace algoriza_internship_66.API.Controllers
 
         }
 
-        [HttpPost("RegisterPatient")]
+        [HttpPost("")]
         public async Task<IActionResult> RegisterPatient([FromBody] RegisterPatientDto registerPatientDto)
         {
 

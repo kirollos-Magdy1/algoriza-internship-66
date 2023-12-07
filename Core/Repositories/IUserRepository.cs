@@ -11,7 +11,7 @@ namespace Core.Repositories
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<User>> FindAllAsync(Expression<Func<User, bool>> criteria, Role role, int? pageSize, int? skip, int? take,
+        Task<IList<User>> FindAllAsync(Role role, int? pageSize, int? skip, int? take,
           Expression<Func<User, object>> orderBy = null, string orderByDirection = OrderBy.Ascending);
 
         Task<User> GetByIdAsync(string id, Role role);
