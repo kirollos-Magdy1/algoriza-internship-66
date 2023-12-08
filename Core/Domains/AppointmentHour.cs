@@ -19,7 +19,7 @@ namespace Core.Domains
             
 
         [ForeignKey("AppointmentDayId")]
-        public AppointmentDay AppointmentDay { get; set; }
+        public virtual AppointmentDay AppointmentDay { get; set; }
 
 
     }

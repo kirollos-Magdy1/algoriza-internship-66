@@ -19,7 +19,7 @@ namespace Core.Domains
         public WeekDays Day { get; set; }
 
         [ForeignKey("DoctorId")]
-        public User Doctor { get; set; }
+        public virtual User Doctor { get; set; }
 
         List<AppointmentHour> AppointmentHours { get; set; }
     }

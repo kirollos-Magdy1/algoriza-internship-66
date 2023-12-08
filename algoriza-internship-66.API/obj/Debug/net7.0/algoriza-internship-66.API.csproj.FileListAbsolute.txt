@@ -88,3 +88,5 @@ C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\algoriza-inter
 C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\algoriza-internship-66.API\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\algoriza-internship-66.API\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\algoriza-internship-66.API\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\algoriza-internship-66.API\bin\Debug\net7.0\Castle.Core.dll
+C:\Users\Dell\source\repos\kirollos-Magdy1\algoriza-internship-66\algoriza-internship-66.API\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Proxies.dll

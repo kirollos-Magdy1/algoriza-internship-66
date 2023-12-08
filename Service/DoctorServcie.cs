@@ -25,12 +25,15 @@ namespace Service
         }
         public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync(int? pageSize, int? skip, int? take)
         {
-            var doctorList = await doctorRepository.FindAllAsync( Role.Doctor, pageSize, skip, take);
+            var doctorList = await doctorRepository.FindAllAsync(Role.Doctor, pageSize, skip, take);
             if (doctorList != null)
             {
                 List<DoctorDto> doctors = new List<DoctorDto>();
                 foreach (var doctor in doctorList)
                 {
+                    Console.WriteLine($"User Id: {doctor.Id}, SpecializationId: {doctor.SpecializationId}, Specialization: {doctor.Specialization?.Name}");
+
+
                     DoctorDto Doctor = new DoctorDto()
                     {
                         Id = doctor.Id,
@@ -43,15 +46,9 @@ namespace Service
                         Email = doctor.Email,
                         Image = doctor.Image,
                         SpecializationId = doctor.SpecializationId,
+                        Specialization = doctor.Specialization
+                        //Specialization = new SpecializationDto doctor.Specialization
                     };
-                    if (doctor.Specialization != null)
-                    {
-                        Doctor.Specialization = new SpecializationDto
-                        {
-                            Id = doctor.Specialization.Id,
-                            Name = doctor.Specialization.Name
-                        };
-                    }
 
                     doctors.Add(Doctor);
                 }
@@ -64,9 +61,6 @@ namespace Service
             }
         }
 
-        
-
-     
         public async Task<DoctorDto> GetDoctorAsync(string Id)
         {
             var existingDoctor = await doctorRepository.GetByIdAsync(Id, Role.Doctor);
@@ -81,7 +75,8 @@ namespace Service
                 DateOfBirth = existingDoctor.DateOfBirth,
                 Gender = existingDoctor.Gender,
                 Email = existingDoctor.Email,
-                Image = existingDoctor.Image
+                Image = existingDoctor.Image,
+                Specialization = existingDoctor.Specialization
             };
 
             return doctor;

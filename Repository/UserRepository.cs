@@ -24,7 +24,8 @@ namespace Repository
             this.usermanger = usermanger;
         }
 
-        public async Task<IList<User>> FindAllAsync(Role role, int? pageSize, int? skip, int? take, Expression<Func<User, object>> orderBy = null, string orderByDirection = "ASC")
+        public async Task<IList<User>> FindAllAsync(Role role, int? pageSize, int? skip, int? take,
+     Expression<Func<User, object>> orderBy = null, string orderByDirection = "ASC")
         {
             IList<User> usersInRole = await usermanger.GetUsersInRoleAsync(role.ToString());
 
@@ -35,15 +36,20 @@ namespace Repository
                     : usersInRole.OrderByDescending(orderBy.Compile()).ToList();
             }
 
+            IQueryable<User> query = usersInRole.AsQueryable();
+
+
             if (skip.HasValue)
-                usersInRole = usersInRole.Skip(skip.Value).ToList();
+                query = query.Skip(skip.Value);
 
             if (take.HasValue)
-                usersInRole = usersInRole.Take(take.Value).ToList();
+                query = query.Take(take.Value);
 
-
-            return usersInRole;
+            return query.ToList();
         }
+
+
+
 
 
         public async Task< User> GetByIdAsync(string id, Role role)

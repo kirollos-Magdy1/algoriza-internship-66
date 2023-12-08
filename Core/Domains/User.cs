@@ -39,6 +39,8 @@ namespace Core.Domains
 
 
         [ForeignKey("SpecializationId")]
-        public Specialization? Specialization { get; set; }
+        public virtual Specialization? Specialization { get; set; }
+
+        
     }
 }

@@ -29,7 +29,7 @@ namespace Core.DTOs
         public string Email { get; set; }
         public int? SpecializationId { get; set; }
 
-        public SpecializationDto? Specialization {  get; set; }
+        public Specialization? Specialization {  get; set; }
 
     }
 }

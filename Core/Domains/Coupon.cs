@@ -29,6 +29,6 @@ namespace Core.Domains
         public bool IsUsed { get; set; } = false;
 
         [ForeignKey("PatientId")]
-        public User? Patient { get; set; }
+        public virtual User? Patient { get; set; }
     }
 }

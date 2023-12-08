@@ -19,13 +19,13 @@ namespace Core.Domains
 
 
         [ForeignKey("PatientId")]
-        public User Patient { get; set; }
+        public virtual User Patient { get; set; }
 
         [ForeignKey("DoctorId")]
-        public User Doctor { get; set; }
+        public virtual User Doctor { get; set; }
 
         [ForeignKey("CouponId")]
-        public Coupon Coupon { get; set; }
+        public virtual Coupon Coupon { get; set; }
 
     }
 }
