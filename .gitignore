@@ -9,7 +9,6 @@
 *.user
 *.userosscache
 *.sln.docstates
-
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -175,7 +174,6 @@ DocProject/Help/*.hhk
 DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
-
 # Click-Once directory
 publish/
 

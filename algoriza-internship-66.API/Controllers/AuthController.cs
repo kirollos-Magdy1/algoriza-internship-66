@@ -1,75 +1,96 @@
 ﻿using Core.DTOs;
 using Core.Enums;
 using Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace algoriza_internship_66.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
-    public class AuthController: Controller
-    {
-        private IAccountService accountService;
-
-        public AuthController(IAccountService accountService)
+        [Route("api/[controller]/[action]")]
+        public class AuthController: Controller
         {
-            this.accountService = accountService;
-        }
+            private IAccountService accountService;
 
-        [HttpPost("")]
-        public async Task<IActionResult> RegisterDoctor([FromBody] RegisterPatientDto registerDoctortDto ) {
-
-            try
+            public AuthController(IAccountService accountService)
             {
-                var RegisterResult =  await accountService.Register(registerDoctortDto, Role.Doctor);
+                this.accountService = accountService;
+            }
+
+            [HttpPost("")]
+            public async Task<IActionResult> RegisterDoctor([FromBody] RegisterPatientDto registerDoctortDto ) {
+
+                try
+                {
+                    var RegisterResult =  await accountService.Register(registerDoctortDto, Role.Doctor);
                 
-                return (RegisterResult.Succeeded) ? Ok(true) : BadRequest("Could not create the account" + RegisterResult.Errors.FirstOrDefault().Description);
+                    return (RegisterResult.Succeeded) ? Ok(true) : BadRequest("Could not create the account" + RegisterResult.Errors.FirstOrDefault().Description);
+
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
 
             }
-            catch (Exception ex)
+
+            [HttpPost("")]
+            public async Task<IActionResult> RegisterPatient([FromBody] RegisterPatientDto registerPatientDto)
             {
-                return BadRequest(ex.Message);
+
+                try
+                {
+                    var RegisterResult = await accountService.Register(registerPatientDto, Role.Patient);
+
+                    return (RegisterResult.Succeeded) ? Ok(true) : BadRequest("Could not create the account" + RegisterResult.Errors.FirstOrDefault().Description);
+
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+
             }
 
-        }
 
-        [HttpPost("")]
-        public async Task<IActionResult> RegisterPatient([FromBody] RegisterPatientDto registerPatientDto)
-        {
-
-            try
+            [HttpPost("")]
+            public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
             {
-                var RegisterResult = await accountService.Register(registerPatientDto, Role.Patient);
 
-                return (RegisterResult.Succeeded) ? Ok(true) : BadRequest("Could not create the account" + RegisterResult.Errors.FirstOrDefault().Description);
+                try
+                {
+                    var token = await accountService.Login(loginUserDto);
+                    if (token != null)
+                        return Ok(token);
+                    else
+                        return BadRequest("Invalid login");
+
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
 
             }
-            catch (Exception ex)
+
+            [HttpGet("")]
+            [Authorize]
+            public IActionResult TestJwt()
             {
-                return BadRequest(ex.Message);
-            }
-
-        }
-
-
-        [HttpPost("")]
-        public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
-        {
-
-            try
-            {
-                var token = await accountService.Login(loginUserDto);
-                if (token != null)
-                    return Ok(token);
-                else
-                    return BadRequest("Invalid login");
+                return Ok(true);
 
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
 
-        }
+        //var userId = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+        //var response = new
+        //{
+        //    Message = "JWT Token is valid",
+        //    UserId = userId
+        //};
+
+        //return Ok(response);
+
+
 
 
 

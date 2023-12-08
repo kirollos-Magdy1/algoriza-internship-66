@@ -54,49 +54,52 @@ namespace Service
 
         public async Task<string> Login(LoginUserDto loginUserDto)
         {
-            User user = await UserManager.FindByNameAsync(loginUserDto.UserName);
+            
+                //check - create token
+                User user = await UserManager.FindByNameAsync(loginUserDto.UserName);
+                if (user != null)//user name found
+                {
+                    bool found = await UserManager.CheckPasswordAsync(user, loginUserDto.Password);
+                    if (found)
+                    {
+                        //Claims Token
+                        var claims = new List<Claim>();
+                        claims.Add(new Claim(ClaimTypes.Name, user.UserName));
+                        claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
+                        claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
 
-            if (user == null)
-            {
+                        //get role
+                        var roles = await UserManager.GetRolesAsync(user);
+                        foreach (var itemRole in roles)
+                        {
+                            claims.Add(new Claim(ClaimTypes.Role, itemRole));
+                        }
+                        SecurityKey securityKey =
+                            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Config["JWT:Secret"]));
+
+                        SigningCredentials signincred =
+                            new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+                        //Create token
+                        JwtSecurityToken mytoken = new JwtSecurityToken(
+                            issuer: Config["JWT:ValidIssuer"],
+                            audience: Config["JWT:ValidAudiance"],
+                            claims: claims,
+                            expires: DateTime.Now.AddHours(1),
+                            signingCredentials: signincred
+                            );
+                        
+                            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+                          string token = tokenHandler.WriteToken(mytoken);
+                    return token; 
+                    }
                 return null;
-            }
-
-            bool found = await UserManager.CheckPasswordAsync(user, loginUserDto.Password);
-
-            if (found)
-            {
-                var claims = new[]
-                {
-            new Claim(ClaimTypes.Name, user.UserName),
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-        };
-
-                using (var sha256 = new System.Security.Cryptography.SHA256Managed())
-                {
-                    byte[] keyBytes = Encoding.UTF8.GetBytes(Config["JWT:Secret"]);
-                    byte[] hashedBytes = sha256.ComputeHash(keyBytes);
-
-                    SecurityKey securityKey = new SymmetricSecurityKey(hashedBytes);
-                    SigningCredentials signincred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-                    JwtSecurityToken mytoken = new JwtSecurityToken(
-                        issuer: Config["JWT:ValidIssuer"],
-                        expires: DateTime.Now.AddHours(1),
-                        claims: claims,
-                        signingCredentials: signincred
-                    );
-
-                    JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
-                    string token = tokenHandler.WriteToken(mytoken);
-
-                    return token;
                 }
-            }
+                return null;
 
-            return null;
+            }
         }
 
 
 
     }
-}
+
