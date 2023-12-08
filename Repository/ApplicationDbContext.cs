@@ -24,8 +24,18 @@ namespace Repository
                 .WithMany()
                 .HasForeignKey(b => b.DoctorId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+    //        modelBuilder.Entity<AppointmentDay>()
+    //.HasKey(x => new { x.DoctorId, x.Day });
+
+    //        modelBuilder.Entity<AppointmentHour>()
+    //            .HasOne(x => x.AppointmentDay)
+    //            .WithMany(x => x.AppointmentHour)
+    //            .HasForeignKey(x => x.AppointmentDayId)
+    //            .HasPrincipalKey(x => x.DoctorId);
+
         }
-        
+
         public DbSet<User> Users { get; set; }
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Specialization> Specializations { get; set; }

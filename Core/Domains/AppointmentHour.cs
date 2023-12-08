@@ -13,13 +13,13 @@ namespace Core.Domains
 
         public int AppointmentDayId { get; set; }
 
-
+        public string Time { get; set; }
 
         public bool Available { get; set; } = true;
             
 
         [ForeignKey("AppointmentDayId")]
-        public AppointmentDay AppointmentDay  { get; set; }
+        public AppointmentDay AppointmentDay { get; set; }
 
 
     }

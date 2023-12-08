@@ -29,8 +29,6 @@ namespace Service
         public  async Task<bool> AddAppointmentAsync(AddAppointmentDto Appointment, string doctorId)
         {
 
-            
-            
                 foreach (KeyValuePair<WeekDays, List<string>> kvp in Appointment.Days)
                 {
                     //Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
@@ -45,7 +43,22 @@ namespace Service
                     {
                         return false;
                     }
-                
+
+                foreach (var time in kvp.Value)
+                {
+                    AppointmentHour appointmentHour = new AppointmentHour()
+                    {
+                        Time = time,
+                        AppointmentDayId = appointmentDay.Id
+                    };
+                    var newAppointmentHour = await appointmentHourRepository.AddAsync(appointmentHour);
+
+                    if (newAppointmentHour == null)
+                    {
+                        return false;
+                    }
+                }
+
             }
 
             return true;

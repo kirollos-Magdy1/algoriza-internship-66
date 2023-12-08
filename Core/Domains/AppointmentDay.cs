@@ -1,6 +1,7 @@
 ﻿using Core.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,12 @@ namespace Core.Domains
 {
     public class AppointmentDay
     {
-        public int Id { get; set; }
 
+        public int Id { get; set; }
         public string DoctorId { get; set; }
 
+        //[Key, Column(Order = 1)]
         public WeekDays Day { get; set; }
-
 
         [ForeignKey("DoctorId")]
         public User Doctor { get; set; }
