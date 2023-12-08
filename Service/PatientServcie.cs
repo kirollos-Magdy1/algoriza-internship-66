@@ -32,7 +32,7 @@ namespace Service
                     PatientDto Patient = new PatientDto()
                     {
                         Id = patient.Id,
-                        userName = patient.UserName,
+                        UserName = patient.UserName,
                         FirstName = patient.FirstName,
                         LastName = patient.LastName,
                         Phone = patient.Phone,
@@ -60,7 +60,7 @@ namespace Service
             PatientDto patient = new PatientDto()
             {
                 Id = existingPatient.Id,
-                userName = existingPatient.UserName,
+                UserName = existingPatient.UserName,
                 FirstName = existingPatient.FirstName,
                 LastName = existingPatient.LastName,
                 Phone = existingPatient.Phone,

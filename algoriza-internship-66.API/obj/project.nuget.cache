@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "02x2lMw1poXS35zDkqPBdPufnAl1togViyYYZ9QNb4XwfiqiDmKxLqWuATwbBaj/vBxNMNchXFTrXOrm/wuYdg==",
+  "dgSpecHash": "aod9Ioejkf2qDwy/jgB5Cfw6p69RoAEUPK/a1na2PvRSxzLUeAvzmRf04PnjMujJt8vF2RIzfUhzlmgTkQIf9Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\algoriza-internship-66.API\\algoriza-internship-66.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.13\\microsoft.aspnetcore.authentication.jwtbearer.7.0.13.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.13\\microsoft.aspnetcore.cryptography.internal.7.0.13.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.13\\microsoft.aspnetcore.cryptography.keyderivation.7.0.13.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.13\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.13.nupkg.sha512",

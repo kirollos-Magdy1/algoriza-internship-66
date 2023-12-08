@@ -49,5 +49,29 @@ namespace algoriza_internship_66.API.Controllers
             }
 
         }
+
+
+        [HttpPost("")]
+        public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
+        {
+
+            try
+            {
+                var token = await accountService.Login(loginUserDto);
+                if (token != null)
+                    return Ok(token);
+                else
+                    return BadRequest("Invalid login");
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
+
+
     }
 }

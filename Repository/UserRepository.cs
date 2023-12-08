@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Repository
     public class UserRepository : IUserRepository
     {
         private readonly UserManager<User> usermanger;
-
+        
         public UserRepository(UserManager<User> usermanger)
         {
             this.usermanger = usermanger;

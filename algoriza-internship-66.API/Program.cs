@@ -23,7 +23,7 @@ namespace algoriza_internship_66.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<ApplicationDbContext>
-(builder => builder.UseSqlServer("server=.;database=Vezeeta;integrated security=true;trust server certificate=true"));
+(builder => builder.UseSqlServer("server=.;database=Vezeeta2;integrated security=true;trust server certificate=true"));
 
             builder.Services.AddIdentity<User, IdentityRole>(options => {
                 options.Password.RequireNonAlphanumeric = false;

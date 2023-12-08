@@ -11,7 +11,7 @@ namespace Core.Services
 {
     public interface IAccountService
     {
-        Task Login(LoginUserDto userDto);
+        Task<string> Login(LoginUserDto userDto);
         public Task<IdentityResult> Register(RegisterDTO registerDto, Role role);
     }
 }

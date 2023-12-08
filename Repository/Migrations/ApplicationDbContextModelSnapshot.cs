@@ -233,7 +233,6 @@ namespace Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("SpecializationId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -453,9 +452,7 @@ namespace Repository.Migrations
                 {
                     b.HasOne("Core.Domains.Specialization", "Specialization")
                         .WithMany()
-                        .HasForeignKey("SpecializationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SpecializationId");
 
                     b.Navigation("Specialization");
                 });

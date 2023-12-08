@@ -33,7 +33,7 @@ namespace Service
                     DoctorDto Doctor = new DoctorDto()
                     {
                         Id = doctor.Id,
-                        userName = doctor.UserName,
+                        UserName = doctor.UserName,
                         FirstName = doctor.FirstName,
                         LastName = doctor.LastName,
                         Phone = doctor.Phone,
@@ -63,7 +63,7 @@ namespace Service
             DoctorDto doctor = new DoctorDto()
             {
                 Id = existingDoctor.Id,
-                userName = existingDoctor.UserName,
+                UserName = existingDoctor.UserName,
                 FirstName = existingDoctor.FirstName,
                 LastName = existingDoctor.LastName,
                 Phone = existingDoctor.Phone,
