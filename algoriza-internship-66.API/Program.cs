@@ -44,6 +44,9 @@ namespace algoriza_internship_66.API
             builder.Services.AddTransient<IUserRepository, UserRepository>();
             builder.Services.AddTransient<IDoctorRepository, DoctorRepository>();
             builder.Services.AddTransient<IPatientRepository, PatientRepository>();
+            builder.Services.AddTransient<IAppointmentDayRepository, AppointmentDayRepository>();
+            builder.Services.AddTransient<IAppointmentHourRepository, AppointmentHourRepository>();
+
 
 
 
@@ -51,6 +54,8 @@ namespace algoriza_internship_66.API
             builder.Services.AddTransient<IAccountService, AccountService>();
             builder.Services.AddTransient<IDoctorServcie, DoctorServcie>();
             builder.Services.AddTransient<IPatientServcie, PatientServcie>();
+            builder.Services.AddTransient<IAppointmentService, AppointmentService>();
+
 
 
             //------------------------------------

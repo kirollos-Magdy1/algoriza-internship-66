@@ -13,7 +13,7 @@ namespace Core.Repositories
     public class CouponRepository: BaseRepository<Coupon>, ICouponRepository
     {
         public CouponRepository(ApplicationDbContext context): base(context)
-        {            
+        {
         }
 
 

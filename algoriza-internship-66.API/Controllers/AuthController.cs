@@ -3,6 +3,7 @@ using Core.Enums;
 using Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace algoriza_internship_66.API.Controllers
 {
@@ -73,12 +74,27 @@ namespace algoriza_internship_66.API.Controllers
             }
 
             [HttpGet("")]
-            [Authorize]
+            [Authorize(Roles ="Patient")]
             public IActionResult TestJwt()
             {
-                return Ok(true);
+                var userIdClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                var nameClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
+                var roleClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
 
-            }
+                var userId = userIdClaim?.Value;
+                var name = nameClaim?.Value;
+                var role = roleClaim?.Value;
+
+                var userInfo = new
+                {
+                    UserId = userId,
+                    Name = name,
+                    Role = role
+                };
+
+                return Ok(userInfo);
+
+        }
 
         //var userId = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 

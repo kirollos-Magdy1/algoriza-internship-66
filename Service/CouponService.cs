@@ -22,6 +22,11 @@ namespace Service
 
         public async Task<bool> AddCouponAsync(AddCouponDto coupon)
         {
+            Console.Out.WriteLine(coupon.DiscountType.GetType());
+            Console.Out.WriteLine((int)coupon.DiscountType);
+
+            if (((int)coupon.DiscountType) > 1) return false;
+
             Coupon NewCoupon = new Coupon()
             {
                 Code = coupon.Code,

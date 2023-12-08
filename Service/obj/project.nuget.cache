@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+6o1GBNUeetkvyLSmXgqv7Hqh/QZQWf3Jt1uMSHF78i9H6ZKzJoFkAjIlYeOuTWEWoEanoxvpkC9jq9Fb49F9w==",
+  "dgSpecHash": "XatwgPX465qGuUyjFCJ6Rx8AON6FfzgTCZHGZDfd3QjsbRcvfy/kiSaIrPGvBivkceN/FDJ+s+HlJ+psjA3Bvg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dell\\source\\repos\\kirollos-Magdy1\\algoriza-internship-66\\Service\\Service.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,7 @@
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.15.1\\microsoft.identitymodel.protocols.6.15.1.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.15.1\\microsoft.identitymodel.protocols.openidconnect.6.15.1.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.15.1\\microsoft.identitymodel.tokens.6.15.1.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.15.1\\system.identitymodel.tokens.jwt.6.15.1.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],

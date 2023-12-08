@@ -84,7 +84,7 @@ namespace Service
                             issuer: Config["JWT:ValidIssuer"],
                             audience: Config["JWT:ValidAudiance"],
                             claims: claims,
-                            expires: DateTime.Now.AddHours(1),
+                            expires: DateTime.Now.AddHours(10),
                             signingCredentials: signincred
                             );
                         
