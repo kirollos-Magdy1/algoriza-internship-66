@@ -1,4 +1,5 @@
-﻿using Core.DTOs;
+﻿using Core.Domains;
+using Core.DTOs;
 using Core.Enums;
 using Core.Repositories;
 using Core.Services;
@@ -40,8 +41,18 @@ namespace Service
                         DateOfBirth = doctor.DateOfBirth,
                         Gender = doctor.Gender,
                         Email = doctor.Email,
-                        Image = doctor.Image
+                        Image = doctor.Image,
+                        SpecializationId = doctor.SpecializationId,
                     };
+                    if (doctor.Specialization != null)
+                    {
+                        Doctor.Specialization = new SpecializationDto
+                        {
+                            Id = doctor.Specialization.Id,
+                            Name = doctor.Specialization.Name
+                        };
+                    }
+
                     doctors.Add(Doctor);
                 }
                 return doctors;

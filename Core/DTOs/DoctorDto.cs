@@ -1,4 +1,5 @@
-﻿using Core.Enums;
+﻿using Core.Domains;
+using Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,8 +26,10 @@ namespace Core.DTOs
 
         public Gender Gender{ get; set; }
 
+        public string Email { get; set; }
         public int? SpecializationId { get; set; }
 
-        public string Email { get; set; }
+        public SpecializationDto? Specialization {  get; set; }
+
     }
 }

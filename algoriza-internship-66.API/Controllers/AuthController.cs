@@ -18,7 +18,7 @@ namespace algoriza_internship_66.API.Controllers
             }
 
             [HttpPost("")]
-            public async Task<IActionResult> RegisterDoctor([FromBody] RegisterPatientDto registerDoctortDto ) {
+            public async Task<IActionResult> RegisterDoctor([FromBody] RegisterDoctorDto registerDoctortDto ) {
 
                 try
                 {
