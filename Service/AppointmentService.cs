@@ -64,6 +64,8 @@ namespace Service
             return true;
         }
 
+
+
         public Task<bool> DeleteAppointment(int id)
         {
             throw new NotImplementedException();
@@ -72,6 +74,21 @@ namespace Service
         public Task<bool> UpdateAppointment(int Id, UpdateAppointmentDto Appointment)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<AppointmentHourDto> GetAppointmentHour(int id)
+        {
+            AppointmentHour appointmentHour =  await appointmentHourRepository.GetByIdAsync(id);
+            AppointmentHourDto AppointmentHour = new AppointmentHourDto()
+            {
+                Id = appointmentHour.Id,
+                AppointmentDayId = appointmentHour.AppointmentDayId,
+                Time = appointmentHour.Time,
+                Available = appointmentHour.Available,
+            };
+
+            return AppointmentHour;
+              
         }
     }
 }

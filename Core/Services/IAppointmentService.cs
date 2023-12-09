@@ -12,5 +12,7 @@ namespace Core.Services
         Task<bool> AddAppointmentAsync(AddAppointmentDto Appointment, string doctorId);
         Task<bool> UpdateAppointment(int Id, UpdateAppointmentDto Appointment);
         Task<bool> DeleteAppointment(int id);
+
+        Task<AppointmentHourDto> GetAppointmentHour(int id);
     }
 }
