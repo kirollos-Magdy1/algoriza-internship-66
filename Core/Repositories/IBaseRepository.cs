@@ -10,6 +10,7 @@ namespace Core.Repositories
     public interface IBaseRepository<T> where T : class
     {
         Task<T> GetByIdAsync(int id);
+        Task<T> GetByNameAsync(string name);
         Task<IEnumerable<T>> GetAllAsync();
         
         Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> criteria, int? skip, int? take, int? pageSize,

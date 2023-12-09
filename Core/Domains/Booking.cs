@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -10,12 +11,14 @@ namespace Core.Domains
     public class Booking
     {
         public int Id { get; set; }
-        public string Status { get; set; }
         public string PatientId { get; set; }
         public string DoctorId { get; set; }
 
         public int CouponId { get; set; }
 
+        public BookingStatus Status { get; set; }
+
+        public string CouponCode { get; set; }
 
 
         [ForeignKey("PatientId")]

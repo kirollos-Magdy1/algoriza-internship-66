@@ -15,7 +15,5 @@ namespace Core.Repositories
         public CouponRepository(ApplicationDbContext context): base(context)
         {
         }
-
-
     }
 }

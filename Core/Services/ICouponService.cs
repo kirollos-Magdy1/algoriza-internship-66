@@ -19,5 +19,6 @@ namespace Core.Services
 
         Task<IEnumerable<CouponDto>> GetAllCouponsAsync();
 
+        Task<CouponDto> GetCouponByCode(string CouponCode);
     }
 }

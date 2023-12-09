@@ -10,7 +10,7 @@ namespace Core.DTOs
     public class AddCouponDto
     {
 
-        public string Code { get; set; }
+        public string Name { get; set; }
 
         public DiscountType DiscountType { get; set; }
         public int DiscountValue { get; set; }

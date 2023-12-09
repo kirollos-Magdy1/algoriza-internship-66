@@ -37,7 +37,7 @@ namespace Core.Repositories
                 else
                     query = query.OrderByDescending(orderBy);
             }
-
+            
             return await query.ToListAsync();
         }
 
@@ -49,6 +49,13 @@ namespace Core.Repositories
         {
             return await _context.Set<T>().FindAsync(id);
         }
+
+        public async Task<T> GetByNameAsync(string name)
+        {
+            return await _context.Set<T>()
+                .FirstOrDefaultAsync(e => EF.Property<string>(e, "Name") == name);
+        }
+
 
         public async Task<T> AddAsync(T entity)
         {
@@ -70,6 +77,8 @@ namespace Core.Repositories
             _context.SaveChanges();
             return entity;
         }
+
+
 
     }
 }

@@ -18,6 +18,9 @@ namespace Repository.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.13")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -77,6 +80,10 @@ namespace Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CouponCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CouponId")
                         .HasColumnType("int");
 
@@ -88,9 +95,8 @@ namespace Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -111,10 +117,6 @@ namespace Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("DiscountType")
                         .HasColumnType("int");
 
@@ -132,6 +134,10 @@ namespace Repository.Migrations
 
                     b.Property<bool>("IsUsed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PatientId")
                         .HasColumnType("nvarchar(450)");
@@ -397,7 +403,7 @@ namespace Repository.Migrations
             modelBuilder.Entity("Core.Domains.AppointmentDay", b =>
                 {
                     b.HasOne("Core.Domains.User", "Doctor")
-                        .WithMany()
+                        .WithMany("AppointmentDays")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -408,7 +414,7 @@ namespace Repository.Migrations
             modelBuilder.Entity("Core.Domains.AppointmentHour", b =>
                 {
                     b.HasOne("Core.Domains.AppointmentDay", "AppointmentDay")
-                        .WithMany()
+                        .WithMany("AppointmentHours")
                         .HasForeignKey("AppointmentDayId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -510,6 +516,16 @@ namespace Repository.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Core.Domains.AppointmentDay", b =>
+                {
+                    b.Navigation("AppointmentHours");
+                });
+
+            modelBuilder.Entity("Core.Domains.User", b =>
+                {
+                    b.Navigation("AppointmentDays");
                 });
 #pragma warning restore 612, 618
         }

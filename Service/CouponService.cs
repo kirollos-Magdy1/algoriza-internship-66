@@ -29,7 +29,7 @@ namespace Service
 
             Coupon NewCoupon = new Coupon()
             {
-                Code = coupon.Code,
+                Name = coupon.Name,
                 DiscountType = coupon.DiscountType,
                 DiscountValue = coupon.DiscountValue,
                 EligibleRequests = coupon.EligibleRequests,
@@ -50,7 +50,7 @@ namespace Service
             var ExistingCoupon =  await couponRepository.GetByIdAsync(Id);
             if (ExistingCoupon == null || (int)coupon.DiscountType > 1) { return false; }   
 
-            ExistingCoupon.Code = coupon.Code;
+            ExistingCoupon.Name = coupon.Name;
             ExistingCoupon.DiscountType = coupon.DiscountType;
             ExistingCoupon.DiscountValue = coupon.DiscountValue;
             ExistingCoupon.EligibleRequests = coupon.EligibleRequests;
@@ -73,7 +73,7 @@ namespace Service
                     CouponDto Coupon = new CouponDto()
                     {
                         Id = coupon.Id,
-                        Code = coupon.Code,
+                        Name = coupon.Name,
                         DiscountType = coupon.DiscountType,
                         DiscountValue = coupon.DiscountValue,
                         EligibleRequests = coupon.EligibleRequests,
@@ -115,5 +115,26 @@ namespace Service
             return (couponRepository.Delete(Coupon) != null);
 
         }
+
+        public async Task<CouponDto> GetCouponByCode(string CouponCode)
+        {
+            var coupon = await couponRepository.GetByNameAsync(CouponCode);
+
+            CouponDto Coupon = new CouponDto()
+            {
+                Id = coupon.Id,
+                Name = coupon.Name,
+                DiscountType = coupon.DiscountType,
+                DiscountValue = coupon.DiscountValue,
+                EligibleRequests = coupon.EligibleRequests,
+                ExpireDate = coupon.ExpireDate,
+                IsActive = coupon.IsActive,
+                IsUsed = coupon.IsUsed,
+            };
+
+            return Coupon;
+
+        }
+
     }
 }
