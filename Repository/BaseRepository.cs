@@ -53,11 +53,8 @@ namespace Core.Repositories
         public async Task<T> AddAsync(T entity)
         {
 
-            var res = await _context.Set<T>().AddAsync(entity);
+            await _context.Set<T>().AddAsync(entity);
 
-            var res2  = await _context.SaveChangesAsync();
-
-            int a = 2;
             return entity;
         }
         public T Update(T entity)

@@ -23,10 +23,12 @@ namespace Repository
         {
             this.usermanger = usermanger;
         }
-
-        public async Task<IList<User>> FindAllAsync(Role role, int? pageSize, int? skip, int? take,
-     Expression<Func<User, object>> orderBy = null, string orderByDirection = "ASC")
-        {
+       
+    
+        public async Task<IList<User>> FindAllAsync(Role role, int? pageSize, int? skip, int? take, string search = null,
+              Expression<Func<User, bool>> criteria = null,
+              Expression<Func<User, object>> orderBy = null, string orderByDirection = "ASC")
+           {
             IList<User> usersInRole = await usermanger.GetUsersInRoleAsync(role.ToString());
 
             if (orderBy != null)
@@ -49,7 +51,31 @@ namespace Repository
         }
 
 
+        // find all doctors with specified criteria
+        public async Task<IList<User>> FindAllAsync(int? pageSize, int? skip, int? take, string? search, Expression<Func<User, bool>> criteria = null, Expression<Func<User, object>> orderBy = null, string orderByDirection = "ASC")
+        {
+            IList<User> usersInRole = await usermanger.GetUsersInRoleAsync("Doctor");
 
+            if (orderBy != null)
+            {
+                usersInRole = orderByDirection == "ASC"
+                    ? usersInRole.OrderBy(orderBy.Compile()).ToList()
+                    : usersInRole.OrderByDescending(orderBy.Compile()).ToList();
+            }
+
+            IQueryable<User> query = usersInRole.AsQueryable();
+
+            query = query.Where(criteria);
+
+            if (skip.HasValue)
+                query = query.Skip(skip.Value);
+
+            if (take.HasValue)
+                query = query.Take(take.Value);
+
+
+            return query.ToList();
+        }
 
 
         public async Task< User> GetByIdAsync(string id, Role role)

@@ -41,6 +41,8 @@ namespace Core.Domains
         [ForeignKey("SpecializationId")]
         public virtual Specialization? Specialization { get; set; }
 
-        
+        public virtual List<AppointmentDay> AppointmentDays { get; set; }
+
+
     }
 }

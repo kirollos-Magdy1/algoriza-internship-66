@@ -21,6 +21,5 @@ namespace Core.Domains
         [ForeignKey("AppointmentDayId")]
         public virtual AppointmentDay AppointmentDay { get; set; }
 
-
     }
 }

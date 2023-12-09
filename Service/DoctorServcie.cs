@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -23,6 +24,55 @@ namespace Service
         {
             this.doctorRepository = doctorRepository;
         }
+
+        public async Task<IEnumerable<DoctorAppointmentsDto>> GetAllDoctorsAppointmentAsync(int? pageSize, int? skip, int? take, string? search)
+        {
+            var doctorList = await doctorRepository.FindAllAsync(Role.Doctor, pageSize, skip, take, search: search);
+
+            if (doctorList != null)
+            {
+                List<DoctorAppointmentsDto> doctors = new List<DoctorAppointmentsDto>();
+                foreach (var doctor in doctorList)
+                {
+                    DoctorAppointmentsDto Doctor = new DoctorAppointmentsDto()
+                    {
+                        Id = doctor.Id,
+                        UserName = doctor.UserName,
+                        FirstName = doctor.FirstName,
+                        LastName = doctor.LastName,
+                        Phone = doctor.Phone,
+                        DateOfBirth = doctor.DateOfBirth,
+                        Gender = doctor.Gender,
+                        Email = doctor.Email,
+                        Image = doctor.Image,
+                        SpecializationId = doctor.SpecializationId,
+                        Specialization = doctor.Specialization,
+                        Times = new Dictionary<int, List<string>>()
+                    };
+
+                    foreach (var appointmentDay in doctor.AppointmentDays)
+                    {
+                        var appointmentHours = appointmentDay.AppointmentHours;
+                        foreach (var appointmentHour in appointmentHours)
+                        {
+                            Doctor.Times[appointmentHour.Id] = new List<string>
+                                {
+                                    appointmentDay.Day.ToString(), appointmentHour.Time
+                                };
+                        }
+                    }
+
+                    doctors.Add(Doctor);
+                }
+                return doctors;
+            }
+            else
+            {
+                return Enumerable.Empty<DoctorAppointmentsDto>();
+            }
+        }
+
+
         public async Task<IEnumerable<DoctorDto>> GetAllDoctorsAsync(int? pageSize, int? skip, int? take)
         {
             var doctorList = await doctorRepository.FindAllAsync(Role.Doctor, pageSize, skip, take);
@@ -42,12 +92,11 @@ namespace Service
                         LastName = doctor.LastName,
                         Phone = doctor.Phone,
                         DateOfBirth = doctor.DateOfBirth,
-                        Gender = doctor.Gender,
+                        Gender = doctor.Gender.ToString(),
                         Email = doctor.Email,
                         Image = doctor.Image,
                         SpecializationId = doctor.SpecializationId,
                         Specialization = doctor.Specialization
-                        //Specialization = new SpecializationDto doctor.Specialization
                     };
 
                     doctors.Add(Doctor);
@@ -73,7 +122,7 @@ namespace Service
                 LastName = existingDoctor.LastName,
                 Phone = existingDoctor.Phone,
                 DateOfBirth = existingDoctor.DateOfBirth,
-                Gender = existingDoctor.Gender,
+                Gender = existingDoctor.Gender.ToString(),
                 Email = existingDoctor.Email,
                 Image = existingDoctor.Image,
                 Specialization = existingDoctor.Specialization
@@ -122,6 +171,6 @@ namespace Service
 
         }
 
-
+        
     }
 }

@@ -21,6 +21,6 @@ namespace Core.Domains
         [ForeignKey("DoctorId")]
         public virtual User Doctor { get; set; }
 
-        List<AppointmentHour> AppointmentHours { get; set; }
+        public virtual  List<AppointmentHour> AppointmentHours { get; set; }
     }
 }

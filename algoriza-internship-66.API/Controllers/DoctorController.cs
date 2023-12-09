@@ -15,6 +15,21 @@ namespace algoriza_internship_66.API.Controllers
             this.doctorService = doctorService;
 
         }
+
+        [HttpGet]
+        public async Task<IActionResult> SearchForDoctors(int? pageSize, int? skip, int? take, [FromQuery] string? search)
+        {
+            try
+            {
+                var doctors = await doctorService.GetAllDoctorsAppointmentAsync(pageSize, skip, take,search);
+                return Ok(doctors);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllDoctors(int? pageSize, int? skip, int? take)
         {
