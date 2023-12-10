@@ -1,4 +1,5 @@
-﻿using Core.DTOs;
+﻿using Core.Domains;
+using Core.DTOs;
 using Core.Enums;
 using Core.IRepositories;
 using Core.Services;
@@ -19,7 +20,8 @@ namespace Service
         private readonly IAppointmentService appointmentService;
         private readonly IDoctorServcie doctorServcie;
 
-        public BookingService(IBookingRepository bookingRepository, ICouponService couponService)
+        public BookingService(IBookingRepository bookingRepository, ICouponService couponService,
+            IAppointmentService appointmentService, IDoctorServcie doctorServcie)
         {
             this.bookingRepository = bookingRepository;
             this.couponService = couponService;
@@ -27,7 +29,7 @@ namespace Service
             this.doctorServcie = doctorServcie;
         }
 
-        public async Task<BookingDto> CreateBookingAsync(string PatientId, AddBookingDto addBookingDto)
+        public async Task<bool> AddBookingAsync(string PatientId, AddBookingDto addBookingDto)
         {
 
             CouponDto coupon =  await couponService.GetCouponByCode(addBookingDto.DiscountCode);
@@ -36,19 +38,29 @@ namespace Service
             DoctorDto doctor = await doctorServcie.GetDoctorAsync(appointmentDay.DoctorId);
             string doctorId = appointmentDay.DoctorId;
 
+            Booking booking = new Booking()
+            {
+                PatientId = PatientId,
+                DoctorId = doctorId,
+                initialPrice = (decimal)doctor.Price,
+                finalPrice = 0,
+                Status = BookingStatus.Pending
+            };
 
+            var res = await appointmentService.UpdateAppointmentStatus(addBookingDto.TimeId, false);
+            //bookingRepository.AddAsync()
+            // NewAppointmentHour
 
+            //appointmentService.UpdateAppointment(appointmentHour.Id, NewAppointmentHour)
 
-            return new BookingDto();
+            var result = await bookingRepository.AddAsync(booking);
 
-            Console.WriteLine("PatientId");
-            Console.WriteLine(PatientId);
+            return (result != null);
 
-            
 
         }
 
-        public Task<IEnumerable<BookingDto>> GetAllMyBookingsAsync(int? pageSize, int? skip, int? take, string? search)
+        public Task<IEnumerable<BookingDto>> GetAllMyBookingsAsync(string userId, int? pageSize, int? skip, int? take, string? search)
         {
             throw new NotImplementedException();
         }

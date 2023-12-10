@@ -81,10 +81,10 @@ namespace Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CouponCode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CouponId")
+                    b.Property<int?>("CouponId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("DoctorId")
@@ -97,6 +97,12 @@ namespace Repository.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("finalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("initialPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

@@ -14,11 +14,14 @@ namespace Core.Domains
         public string PatientId { get; set; }
         public string DoctorId { get; set; }
 
-        public int CouponId { get; set; }
+        public int? CouponId { get; set; }
 
+
+        public string? CouponCode { get; set; }
+
+        public decimal initialPrice { get; set; }
+        public decimal finalPrice { get; set; }
         public BookingStatus Status { get; set; }
-
-        public string CouponCode { get; set; }
 
 
         [ForeignKey("PatientId")]

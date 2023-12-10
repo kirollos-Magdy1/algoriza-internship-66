@@ -3,6 +3,7 @@ using Core.DTOs;
 using Core.Enums;
 using Core.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -31,6 +32,9 @@ namespace Service
         }
         public async Task<IdentityResult> Register(RegisterDTO registerDto, Role role)
         {
+            if ((registerDto as RegisterDoctorDto)?.SpecializationId < 1)
+                return IdentityResult.Failed(new IdentityError { Description = "Invalid Specialization id" });
+
             User user = new User
             {
                 UserName = registerDto.UserName,

@@ -25,7 +25,7 @@ namespace algoriza_internship_66.API.Controllers
 
             try
             {
-                var booking = await bookingService.CreateBookingAsync(patientId.ToString(), addBookingDto);
+                var booking = await bookingService.AddBookingAsync(patientId.ToString(), addBookingDto);
                 return Ok(booking);
             }
             catch (Exception ex)
@@ -37,9 +37,11 @@ namespace algoriza_internship_66.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMyBookings(int? pageSize, int? skip, int? take, string? search)
         {
+            var userId = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
             try
             {
-                var bookings = await bookingService.GetAllMyBookingsAsync(pageSize, skip, take,search);
+                var bookings = await bookingService.GetAllMyBookingsAsync(userId.ToString(), pageSize, skip, take,search);
                 return Ok(bookings);
             }
             catch (Exception ex)

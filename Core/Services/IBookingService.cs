@@ -10,8 +10,8 @@ namespace Core.Services
 {
     public interface IBookingService
     {
-        Task<BookingDto> CreateBookingAsync(string PatientId, AddBookingDto addBookingDto);
-        Task<IEnumerable<BookingDto>> GetAllMyBookingsAsync(int? pageSize, int? skip, int? take, string? search);
+        Task<bool> AddBookingAsync(string PatientId, AddBookingDto addBookingDto);
+        Task<IEnumerable<BookingDto>> GetAllMyBookingsAsync(string userId, int? pageSize, int? skip, int? take, string? search);
         Task<bool> UpdateBookingStatus(int Id, BookingStatus Status);
 
     }

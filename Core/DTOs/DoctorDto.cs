@@ -27,6 +27,9 @@ namespace Core.DTOs
         public string Gender{ get; set; }
 
         public string Email { get; set; }
+
+        public decimal? Price { get; set; }
+
         public int? SpecializationId { get; set; }
 
         public Specialization? Specialization {  get; set; }

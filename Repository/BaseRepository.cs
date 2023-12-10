@@ -61,6 +61,7 @@ namespace Core.Repositories
         {
 
             await _context.Set<T>().AddAsync(entity);
+            await _context.SaveChangesAsync();
 
             return entity;
         }

@@ -73,42 +73,28 @@ namespace algoriza_internship_66.API.Controllers
 
             }
 
-            [HttpGet("")]
-            [Authorize(Roles ="Patient")]
-            public IActionResult TestJwt()
-            {
-                var userIdClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-                var nameClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
-                var roleClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+        //    [HttpGet("")]
+        //    [Authorize(Roles ="Admin")]
+        //    public IActionResult TestJwt()
+        //    {
+        //        var userIdClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+        //        var nameClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
+        //        var roleClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
 
-                var userId = userIdClaim?.Value;
-                var name = nameClaim?.Value;
-                var role = roleClaim?.Value;
+        //        var userId = userIdClaim?.Value;
+        //        var name = nameClaim?.Value;
+        //        var role = roleClaim?.Value;
 
-                var userInfo = new
-                {
-                    UserId = userId,
-                    Name = name,
-                    Role = role
-                };
+        //        var userInfo = new
+        //        {
+        //            UserId = userId,
+        //            Name = name,
+        //            Role = role
+        //        };
 
-                return Ok(userInfo);
+        //        return Ok(userInfo);
 
-        }
-
-        //var userId = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-
-        //var response = new
-        //{
-        //    Message = "JWT Token is valid",
-        //    UserId = userId
-        //};
-
-        //return Ok(response);
-
-
-
-
+        //}
 
     }
 }

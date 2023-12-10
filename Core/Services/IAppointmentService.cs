@@ -16,5 +16,8 @@ namespace Core.Services
         Task<AppointmentHourDto> GetAppointmentHour(int id);
         Task<AppointmentDayDto> GetAppointmentDay(int id);
 
+
+        Task<bool> UpdateAppointmentStatus(int id, bool Available);
+
     }
 }

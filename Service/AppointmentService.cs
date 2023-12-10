@@ -107,5 +107,14 @@ namespace Service
             };
             return AppointmentDay;
         }
+
+        public async Task<bool> UpdateAppointmentStatus(int id, bool Available)
+        {
+            AppointmentHour appointmentHour =  await appointmentHourRepository.GetByIdAsync(id);
+            appointmentHour.Available = Available;
+            var result = appointmentHourRepository.Update(appointmentHour);
+           
+            return result != null;
+        }
     }
 }

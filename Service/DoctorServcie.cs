@@ -47,6 +47,7 @@ namespace Service
                         Image = doctor.Image,
                         SpecializationId = doctor.SpecializationId,
                         Specialization = doctor.Specialization,
+                        Price = doctor.Price,
                         Times = new Dictionary<int, List<string>>()
                     };
 
@@ -95,6 +96,7 @@ namespace Service
                         Gender = doctor.Gender.ToString(),
                         Email = doctor.Email,
                         Image = doctor.Image,
+                        Price = doctor.Price,
                         SpecializationId = doctor.SpecializationId,
                         Specialization = doctor.Specialization
                     };
@@ -125,6 +127,7 @@ namespace Service
                 Gender = existingDoctor.Gender.ToString(),
                 Email = existingDoctor.Email,
                 Image = existingDoctor.Image,
+                Price = existingDoctor.Price,
                 Specialization = existingDoctor.Specialization
             };
 
