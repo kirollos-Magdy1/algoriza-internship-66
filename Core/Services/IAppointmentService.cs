@@ -14,5 +14,7 @@ namespace Core.Services
         Task<bool> DeleteAppointment(int id);
 
         Task<AppointmentHourDto> GetAppointmentHour(int id);
+        Task<AppointmentDayDto> GetAppointmentDay(int id);
+
     }
 }

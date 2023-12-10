@@ -90,5 +90,17 @@ namespace Service
             return AppointmentHour;
               
         }
+
+        public async Task<AppointmentDayDto> GetAppointmentDay(int id)
+        {
+            AppointmentDay appointmentDay = await appointmentDayRepository.GetByIdAsync(id);
+            AppointmentDayDto AppointmentDay = new AppointmentDayDto()
+            {
+                Id = appointmentDay.Id,
+               DoctorId = appointmentDay.DoctorId,
+                Day = appointmentDay.Day
+            };
+            return AppointmentDay;
+        }
     }
 }
