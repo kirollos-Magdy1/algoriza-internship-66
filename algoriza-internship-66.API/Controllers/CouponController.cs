@@ -1,10 +1,12 @@
 ﻿using Core.DTOs;
 using Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace algoriza_internship_66.API.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [Authorize(Roles = "Admin")]
     public class CouponController : Controller
     {
         private ICouponService couponService;

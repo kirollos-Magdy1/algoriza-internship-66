@@ -1,11 +1,14 @@
 ﻿using Core.DTOs;
 using Core.Enums;
 using Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace algoriza_internship_66.API.Controllers
 {
     [Route("api/[controller]/[action]")]
+    [Authorize(Roles = "Admin")]
+
     public class DoctorController: Controller
     {
         private IDoctorServcie doctorService;
@@ -17,6 +20,8 @@ namespace algoriza_internship_66.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Patient")]
+
         public async Task<IActionResult> SearchForDoctors(int? pageSize, int? skip, int? take, [FromQuery] string? search)
         {
             try
@@ -92,11 +97,6 @@ namespace algoriza_internship_66.API.Controllers
             }
 
         }
-
-
-
-
-
 
 
     }

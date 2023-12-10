@@ -1,6 +1,7 @@
 ﻿using Core.DTOs;
 using Core.Enums;
 using Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -16,9 +17,10 @@ namespace algoriza_internship_66.API.Controllers
         {
             this.bookingService = bookingService;
         }
-     
+
 
         [HttpPost()]
+        [Authorize(Roles = "Patient")]
         public async Task<IActionResult> CreateBooking([FromBody] AddBookingDto addBookingDto)
         {
             var patientId = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -35,6 +37,8 @@ namespace algoriza_internship_66.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Patient,Doctor")]
+
         public async Task<IActionResult> GetMyBookings(int? pageSize, int? skip, int? take, string? search)
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
@@ -51,6 +55,7 @@ namespace algoriza_internship_66.API.Controllers
         }
 
         [HttpPatch("Id")]
+        [Authorize(Roles = "Doctor")]
         public async Task<IActionResult> ConfirmBooking(int Id)
         {
             try
@@ -66,6 +71,7 @@ namespace algoriza_internship_66.API.Controllers
         }
 
         [HttpPatch("{Id}")]
+        [Authorize(Roles = "Patient")]
         public async Task<IActionResult> CancelBooking(int Id)
         {
             try

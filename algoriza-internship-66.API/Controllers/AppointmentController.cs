@@ -21,7 +21,6 @@ namespace algoriza_internship_66.API.Controllers
         [Authorize(Roles ="Doctor")]
         public async Task<IActionResult> CreateAppointment([FromBody] AddAppointmentDto appointmentDto)
         {
-            //return Ok(appointmentDto);
             var userId = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
 

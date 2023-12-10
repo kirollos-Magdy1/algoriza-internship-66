@@ -96,5 +96,19 @@ namespace algoriza_internship_66.API.Controllers
 
         //}
 
+        //var userId = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+        //var response = new
+        //{
+        //    Message = "JWT Token is valid",
+        //    UserId = userId
+        //};
+
+        //return Ok(response);
+
+
+
+
+
     }
 }
