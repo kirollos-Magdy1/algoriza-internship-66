@@ -156,21 +156,35 @@ namespace Service
 
         public async Task<bool> DeleteDoctorAsync(string id)
         {
-            //var existingDoctor = await doctorRepository.GetByIdAsync(id.ToString(), Role.Doctor);
-                
+            var existingDoctor = await doctorRepository.GetByIdAsync(id.ToString(), Role.Doctor);
 
-            //if (existingDoctor == null)
-            //{
-            //    return false;
-            //}
+            if (existingDoctor == null)
+            {
+                return false;
+            }
 
             var result = await doctorRepository.DeleteAsync(id);
 
             return result != null;
 
-
         }
 
-        
+        public async Task<bool> AddDoctorVisitPrice(string doctorId, decimal price)
+        {
+            var existingDoctor = await doctorRepository.GetByIdAsync(doctorId, Role.Doctor);
+
+            if (existingDoctor == null)
+            {
+                return false;
+            }
+
+            existingDoctor.Price = price;
+
+            var result = await doctorRepository.UpdateAsync(existingDoctor);
+
+            return result != null;
+
+        }
+       
     }
 }

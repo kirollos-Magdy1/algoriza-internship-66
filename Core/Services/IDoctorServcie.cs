@@ -16,5 +16,9 @@ namespace Core.Services
 
         Task<bool> UpdateDoctorAsync(string Id, UpdateDoctorDto doctor);
         Task<bool> DeleteDoctorAsync(string id);
+
+        Task<bool> AddDoctorVisitPrice(string doctorId, decimal price);
+
+
     }
 }

@@ -17,17 +17,22 @@ namespace Service
     {
         private readonly IAppointmentDayRepository appointmentDayRepository;
         private readonly IAppointmentHourRepository appointmentHourRepository;
+        private readonly IDoctorServcie doctorServcie;
+
 
 
         public AppointmentService(IAppointmentDayRepository appointmentDayRepository
-            , IAppointmentHourRepository appointmentHourRepository)
+            , IAppointmentHourRepository appointmentHourRepository
+            , IDoctorServcie doctorServcie)
         {
             this.appointmentDayRepository = appointmentDayRepository;
             this.appointmentHourRepository = appointmentHourRepository;
+            this.doctorServcie = doctorServcie;
         }
 
         public  async Task<bool> AddAppointmentAsync(AddAppointmentDto Appointment, string doctorId)
         {
+                await doctorServcie.AddDoctorVisitPrice(doctorId,Appointment.Price);
 
                 foreach (KeyValuePair<WeekDays, List<string>> kvp in Appointment.Days)
                 {

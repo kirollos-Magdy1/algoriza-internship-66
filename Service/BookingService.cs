@@ -17,12 +17,14 @@ namespace Service
         private readonly IBookingRepository bookingRepository;
         private readonly ICouponService couponService;
         private readonly IAppointmentService appointmentService;
+        private readonly IDoctorServcie doctorServcie;
 
         public BookingService(IBookingRepository bookingRepository, ICouponService couponService)
         {
             this.bookingRepository = bookingRepository;
             this.couponService = couponService;
             this.appointmentService = appointmentService;
+            this.doctorServcie = doctorServcie;
         }
 
         public async Task<BookingDto> CreateBookingAsync(string PatientId, AddBookingDto addBookingDto)
@@ -30,6 +32,11 @@ namespace Service
 
             CouponDto coupon =  await couponService.GetCouponByCode(addBookingDto.DiscountCode);
             AppointmentHourDto appointmentHour = await appointmentService.GetAppointmentHour(addBookingDto.TimeId);
+            AppointmentDayDto appointmentDay = await appointmentService.GetAppointmentDay(appointmentHour.AppointmentDayId);
+            DoctorDto doctor = await doctorServcie.GetDoctorAsync(appointmentDay.DoctorId);
+            string doctorId = appointmentDay.DoctorId;
+
+
 
 
             return new BookingDto();

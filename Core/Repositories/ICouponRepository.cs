@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Core.IRepositories
 {
     public interface ICouponRepository: IBaseRepository<Coupon>
-    {
-
+    { 
     }
 }
